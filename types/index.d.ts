@@ -1,6 +1,4 @@
 import { Client, Collection, EmbedBuilder, Guild, Interaction, Message } from "discord.js";
-import { Quest, Relation, RelationProperty } from "my-types";
-import { UserData } from 'my-classes';
 
 /**
  * Represents the basecode object.
@@ -24,8 +22,6 @@ export const basecode: {
     decode: (id: string) => [string, string];
 };
 
-export function checkBot(role_id: string, guild: Guild, botType: string): Promise<{ embeds: EmbedBuilder[] } | undefined>;
-
 export function consolelog(module: string, content: string): void;
 
 export function delay(time: number): Promise<void>;
@@ -37,18 +33,6 @@ export function emojiURL(emoji: string): string;
 export function error(message: string, meta: Message<true> | Interaction): Promise<void>;
 
 export function formatNumber(number: number): string;
-
-export function getRelationProperties(client: Client, rela: Relation): RelationProperty
-
-interface GetVoiceMembersOptions {
-    premium: boolean;
-    relation: boolean;
-    club: boolean;
-}
-
-export function getVoiceMembers(client: Client, options: GetVoiceMembersOptions): Promise<string[]>;
-
-export function inRange(x: number, a: number, b: number): boolean
 
 export function interactionCooldown(interaction: Interaction, client: Client): Promise<boolean>;
 
@@ -78,22 +62,6 @@ interface MyMsOptions { long?: boolean; except?: { d?: boolean; h?: boolean; m?:
  * @returns The formatted time as a string, number, or false if the input is invalid.
  */
 export function myms(time: string | number, options?: MyMsOptions): string | number | false;
-
-export function openCrate(
-    user: UserData,
-    crate_id: string,
-    client: Client,
-    colorize_crate?: boolean
-): Promise<EmbedBuilder | undefined>;
-
-/**
- * Generates a random number within a specified range.
- * 
- * @param min - The minimum number in the range.
- * @param max - The maximum number in the range.
- * @returns A random number between min and max.
- */
-export function randomNumber(min: number, max: number): number;
 
 /**
  * Parses a string to a number. If the string contains a range (e.g., "10~20"),
